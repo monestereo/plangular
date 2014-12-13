@@ -15,12 +15,6 @@ var markdown = require('gulp-markdown');
 var pygmentize = require('./docs/gulp/pygments');
 
 gulp.task('compilejs', function() {
-  gulp.src('./src/v-plangular.js')
-    .pipe(browserify())
-    .pipe(gulp.dest('./'))
-    .pipe(uglify())
-    .pipe(rename('v-plangular.min.js'))
-    .pipe(gulp.dest('./'));
   gulp.src('./src/ng-plangular.js')
     .pipe(gulp.dest('./'))
     .pipe(uglify())
@@ -30,11 +24,6 @@ gulp.task('compilejs', function() {
 
 
 gulp.task('docs-pygmentize', function() {
-  gulp.src('./docs/vuejs/src/*.html')
-    .pipe(gulp.dest('./docs/vuejs/partials'))
-    .pipe(pygmentize())
-    .pipe(rename(function(path) { path.basename += '-code', path.extname = '.html' }))
-    .pipe(gulp.dest('./docs/vuejs/partials'));
   gulp.src('./docs/angular/src/*.html')
     .pipe(gulp.dest('./docs/angular/partials'))
     .pipe(pygmentize())
@@ -61,10 +50,6 @@ gulp.task('docs-sass', function() {
 //});
 
 gulp.task('docs-js', function() {
-  gulp.src('./docs/vuejs/src/*.js')
-    .pipe(browserify())
-    .pipe(uglify())
-    .pipe(gulp.dest('./docs/vuejs'));
   gulp.src('./docs/angular/src/*.js')
     .pipe(browserify())
     .pipe(uglify())
@@ -77,7 +62,7 @@ gulp.task('server', function() {
 
 gulp.task('default', ['compilejs', 'docs-sass', 'docs-js', 'docs-pygmentize', 'server'], function() {
   gulp.watch(
-    ['./src/**/*', './docs/src/**/*', './docs/vuejs/src/**/*', './docs/angular/src/**/*'],
+    ['./src/**/*', './docs/src/**/*', './docs/angular/src/**/*'],
     ['compilejs', 'docs-sass', 'docs-js', 'docs-pygmentize']
   );
 });

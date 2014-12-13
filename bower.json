@@ -1,0 +1,19 @@
+{
+	"name": "plangular",
+	"version": "1.0.0",
+	"homepage": "https://github.com/monestereo/plangular",
+	"authors": [
+		"jxnblk <https://github.com/jxnblk/plangular>"
+	],
+	"description": "Soundcloud Player for angular",
+	"main": "ng-plangular.js",
+	"license": "MIT",
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components",
+		"test",
+		"tests"
+	]
+}
